@@ -5,6 +5,10 @@ public class PolarPoint2D {
     public double r;
     public double theta;
 
+    public PolarPoint2D() {
+
+    }
+
 
     public static PolarPoint2D fromCartesian(Point2D point2D) {
         PolarPoint2D polarPoint2D = new PolarPoint2D();
@@ -34,4 +38,8 @@ public class PolarPoint2D {
     }
 
 
+    public PolarPoint2D(double r, double theta) {
+        this.r = r;
+        this.theta = theta;
+    }
 }

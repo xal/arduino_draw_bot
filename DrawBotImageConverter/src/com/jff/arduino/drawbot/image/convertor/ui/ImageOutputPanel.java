@@ -49,6 +49,8 @@ public class ImageOutputPanel extends Composite {
         canvas = new Canvas(this, SWT.NONE);
         canvas.setLayoutData(layoutData);
 
+        canvas.setBackground(new Color(Display.getCurrent(), 255, 255, 255));
+
         canvas.addPaintListener(new PaintListener() {
             @Override
             public void paintControl(PaintEvent paintEvent) {
@@ -57,7 +59,7 @@ public class ImageOutputPanel extends Composite {
 
                 if(paintLine != null) {
 
-                    gc.setForeground(new Color(Display.getCurrent(), 255,255,255));
+                    gc.setForeground(new Color(Display.getCurrent(), 0,0,0));
 
                     List<Point2D> points = paintLine.getPoints();
 
