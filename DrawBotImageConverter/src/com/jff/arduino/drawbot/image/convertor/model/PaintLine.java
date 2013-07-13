@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PaintLine {
 
-    private static final double R_STEP = 20;
+    private static final double R_STEP = 10;
     private static final double THETA_STEP = Math.PI / 2 * R_STEP;
 
     private static final double CYLINDER_RADIUS = 50;
@@ -14,6 +14,10 @@ public class PaintLine {
     private static final double MIN_LINE_LENGTH_STEP = Math.PI * 2 * CYLINDER_RADIUS / CYLINDER_STEPS;
 
     private List<Point2D> points = new ArrayList<Point2D>();
+
+    private static int MAX_GRAY_COLOR_VALUE = 255;
+    private static int MIN_GRAY_COLOR_VALUE = 0;
+
 
     public List<Point2D> getPoints() {
         return points;
@@ -34,7 +38,7 @@ public class PaintLine {
 
         double rStep = R_STEP;
 
-        for (double i = 0; i <= diagonalLength; i += rStep) {
+        for (double i = rStep; i <= diagonalLength; i += rStep) {
             double r = i;
 
             double thetaStep = CYLINDER_RADIUS / r;
@@ -83,72 +87,112 @@ public class PaintLine {
                                          double nextTheta, int width, int height) {
 
 
+        PolarPoint2D currentPolarPoint2D = new PolarPoint2D(r, theta);
 
-//        PolarPoint2D currentPolarPoint2D = new PolarPoint2D(r, theta);
-//
-//        Point2D currentPoint2D = PolarPoint2D.toCartesian(currentPolarPoint2D);
+        Point2D currentPoint2D = PolarPoint2D.toCartesian(currentPolarPoint2D);
+
+        PolarPoint2D nextPolarPoint2D = new PolarPoint2D(r, nextTheta);
+
+        Point2D nextPoint2D = PolarPoint2D.toCartesian(nextPolarPoint2D);
 
         int[][] bitmap = grayScaleImageBitmap.getBitmap();
 
 
+        int gray = getColorForRegion(bitmap, currentPoint2D, nextPoint2D);
 
 
-//            int gray = bitmap[currentPoint2D.x][currentPoint2D.y];
+        double thetaStep = Math.abs(nextTheta - theta);
+        double rStep = R_STEP;
 
 
-            double thetaStep = nextTheta - theta;
-            double rStep = R_STEP;
+        double currentTheta = theta;
 
 
-
-            double currentTheta = theta;
-
-
-            while(true) {
-
-                double minStep =  MIN_LINE_LENGTH_STEP/ r;
-
-                for(int i = 0; i < rStep; i++) {
-
-                    double currentR = r - i;
+        double colorRatio = (((float) (MAX_GRAY_COLOR_VALUE - gray - MIN_GRAY_COLOR_VALUE)) /
+                MAX_GRAY_COLOR_VALUE - MIN_GRAY_COLOR_VALUE);
 
 
+        double segmentMinThetaStep = MIN_LINE_LENGTH_STEP / r;
 
 
-                    PolarPoint2D innerPolarPoint2D = new PolarPoint2D(currentR, currentTheta);
+        int segmentStepCount = (int) (thetaStep / segmentMinThetaStep);
 
-                    Point2D innerPoint2D = PolarPoint2D.toCartesian(innerPolarPoint2D);
 
-                    if (innerPoint2D.x < width && innerPoint2D.y < height) {
+        segmentStepCount = (int) (segmentStepCount * colorRatio);
 
-                        paintLine.points.add(innerPoint2D);
+        double segmentThetaStep = thetaStep / segmentStepCount;
 
-                    }
+        while (true) {
 
-                }
 
-                if(theta < nextTheta) {
+            for (int i = 0; i < rStep; i++) {
 
-                    currentTheta += minStep;
-                    if(currentTheta > nextTheta) {
-                        break;
-                    }
-                } else {
-                    currentTheta -= minStep;
-                    if(currentTheta < nextTheta) {
-                        break;
-                    }
+                double currentR = r - i;
+
+
+                PolarPoint2D innerPolarPoint2D = new PolarPoint2D(currentR, currentTheta);
+
+                Point2D innerPoint2D = PolarPoint2D.toCartesian(innerPolarPoint2D);
+
+                if (innerPoint2D.x < width && innerPoint2D.y < height) {
+
+                    paintLine.points.add(innerPoint2D);
+
                 }
 
             }
 
+            if (theta < nextTheta) {
 
+                currentTheta += segmentThetaStep;
+                if (currentTheta > nextTheta) {
+                    break;
+                }
+            } else {
+                currentTheta -= segmentThetaStep;
+                if (currentTheta < nextTheta) {
+                    break;
+                }
+            }
 
-
-
-
+        }
 
 
     }
 
+    private static int getColorForRegion(int[][] bitmap, Point2D currentPoint2D, Point2D nextPoint2D) {
+
+        int color = 0;
+        int count = 0;
+
+
+        int minX = Math.min(currentPoint2D.x, nextPoint2D.x);
+        int minY = Math.min(currentPoint2D.y, nextPoint2D.y);
+        int maxX = Math.max(currentPoint2D.x, nextPoint2D.x);
+        int maxY = Math.max(currentPoint2D.y, nextPoint2D.y);
+
+        for (int i = minX; i < maxX; i++) {
+            for (int j = minY; j < maxY; j++) {
+
+                if( i > 0 &&  i < bitmap.length && j > 0 && j < bitmap[i].length) {
+                    color += bitmap[i][j];
+
+
+
+                    count++;
+                }
+
+
+            }
+        }
+
+        if(count != 0) {
+
+        color /= count;
+        }
+
+
+        return color;
+
+    }
 }

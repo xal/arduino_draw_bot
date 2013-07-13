@@ -100,6 +100,8 @@ public class ImageOutputPanel extends Composite {
             public void widgetSelected(SelectionEvent selectionEvent) {
 
 
+
+
             }
 
             @Override
@@ -109,6 +111,7 @@ public class ImageOutputPanel extends Composite {
         });
 
     }
+
 
     public void changeOutputImageData(Image imageBitmapFromGrayScale) {
 

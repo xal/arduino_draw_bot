@@ -69,6 +69,7 @@ public class ConverterController {
 
 
 
+
         imageOutputPanel.changePaintLine(paintLine);
 
         greyed.dispose();
