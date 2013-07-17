@@ -1,14 +1,20 @@
 package com.jff.arduino.drawbot.image.convertor.model;
 
+import com.jff.arduino.drawbot.image.convertor.main.Point2D;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaintLine {
 
-    private static final double R_STEP = 10;
-    private static final double THETA_STEP = Math.PI / 2 * R_STEP;
+    private static final double R_STEP = 5;
 
-    private static final double CYLINDER_RADIUS = 50;
+
+    private static final double CYLINDER_RADIUS = 10;
     private static final double CYLINDER_STEPS = 200;
 
     private static final double MIN_LINE_LENGTH_STEP = Math.PI * 2 * CYLINDER_RADIUS / CYLINDER_STEPS;
@@ -17,6 +23,9 @@ public class PaintLine {
 
     private static int MAX_GRAY_COLOR_VALUE = 255;
     private static int MIN_GRAY_COLOR_VALUE = 0;
+
+    public PaintPathEngine pathEngine = new PaintPathEngine();
+    public GrayScaleImageBitmap bitmap;
 
 
     public List<Point2D> getPoints() {
@@ -28,6 +37,14 @@ public class PaintLine {
 
         PaintLine paintLine = new PaintLine();
 
+        paintLine.bitmap = grayScaleImageBitmap;
+
+        //doWork(grayScaleImageBitmap, paintLine);
+
+        return paintLine;
+    }
+
+    private static void doWork(GrayScaleImageBitmap grayScaleImageBitmap, PaintLine paintLine) {
         int width = grayScaleImageBitmap.getWidth();
         int height = grayScaleImageBitmap.getHeight();
 
@@ -58,6 +75,23 @@ public class PaintLine {
 
                 }
 
+                EngineState state;
+
+
+                int steps = howManyStepsBetweenLines(r);
+
+                for (int k = 0; k < steps; k++) {
+
+                    state = EngineState.RIGHT_CLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+
+                    state = EngineState.LEFT_CLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+                }
+
+
             } else {
 
                 for (double j = Math.PI / 2; j > 0; j -= thetaStep) {
@@ -72,14 +106,42 @@ public class PaintLine {
 
                 }
 
+                EngineState state;
+
+                int steps = howManyStepsBetweenLines(r);
+
+                for (int k = 0; k < steps; k++) {
+                    state = EngineState.LEFT_CLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+
+//                    state = EngineState.RIGHT_CLOCKWISE;
+//                    paintLine.pathEngine.add(state);
+
+                    state = EngineState.RIGHT_ANTICLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+                }
+
 
             }
             reverse = !reverse;
 
 
         }
+    }
 
-        return paintLine;
+
+    private static int howManyStepsBetweenLines(double r) {
+        int steps = 0;
+
+//        steps = (int) Math.round(R_STEP / MIN_LINE_LENGTH_STEP / (2.25f));
+        steps = (int) Math.round(R_STEP / MIN_LINE_LENGTH_STEP / 4);
+
+
+//        steps /= 2;
+
+        return steps;
     }
 
     private static void addPointIntoLine(GrayScaleImageBitmap grayScaleImageBitmap,
@@ -120,40 +182,126 @@ public class PaintLine {
 
         segmentStepCount = (int) (segmentStepCount * colorRatio);
 
+        rStep *= colorRatio;
+
         double segmentThetaStep = thetaStep / segmentStepCount;
+
+        boolean reverse = false;
 
         while (true) {
 
+            Point2D innerPoint2D = null;
 
-            for (int i = 0; i < rStep; i++) {
+            if (reverse) {
 
-                double currentR = r - i;
+                for (int i = (int) (rStep - 1); i >= 0; i--) {
+
+                    double currentR = r - i;
 
 
-                PolarPoint2D innerPolarPoint2D = new PolarPoint2D(currentR, currentTheta);
+                    PolarPoint2D innerPolarPoint2D = new PolarPoint2D(currentR, currentTheta);
 
-                Point2D innerPoint2D = PolarPoint2D.toCartesian(innerPolarPoint2D);
+                    innerPoint2D = PolarPoint2D.toCartesian(innerPolarPoint2D);
 
-                if (innerPoint2D.x < width && innerPoint2D.y < height) {
+                    if (innerPoint2D.x < width && innerPoint2D.y < height) {
 
-                    paintLine.points.add(innerPoint2D);
+
+                        paintLine.points.add(innerPoint2D);
+
+                    }
+
+                    EngineState state;
+
+//                        if(theta > nextTheta) {
+
+                    state = EngineState.LEFT_ANTICLOCKWISE;
+//                        }   else {
+//                            state = EngineState.RIGHT_ANTICLOCKWISE;
+//                        }
+
+
+//                        paintLine.pathEngine.add(state);
 
                 }
 
+            } else {
+                for (int i = 0; i < rStep; i++) {
+
+                    double currentR = r - i;
+
+
+                    PolarPoint2D innerPolarPoint2D = new PolarPoint2D(currentR, currentTheta);
+
+                    innerPoint2D = PolarPoint2D.toCartesian(innerPolarPoint2D);
+
+                    if (innerPoint2D.x < width && innerPoint2D.y < height) {
+
+
+                        paintLine.points.add(innerPoint2D);
+
+                    }
+
+                    EngineState state;
+
+//                        if(theta > nextTheta) {
+
+                    state = EngineState.LEFT_CLOCKWISE;
+//                        }   else {
+//                            state = EngineState.RIGHT_CLOCKWISE;
+//                        }
+
+
+//                        paintLine.pathEngine.add(state);
+
+                }
             }
+
+            reverse = !reverse;
+
 
             if (theta < nextTheta) {
 
                 currentTheta += segmentThetaStep;
-                if (currentTheta > nextTheta) {
+
+
+                EngineState state;
+
+                if (innerPoint2D != null && innerPoint2D.x < width && innerPoint2D.y < height) {
+
+                    state = EngineState.RIGHT_CLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+                }
+
+
+                if (currentTheta > nextTheta && !reverse) {
                     break;
                 }
             } else {
                 currentTheta -= segmentThetaStep;
-                if (currentTheta < nextTheta) {
+
+
+                EngineState state;
+
+
+                if (innerPoint2D != null && innerPoint2D.x < width && innerPoint2D.y < height) {
+
+
+                    state = EngineState.RIGHT_ANTICLOCKWISE;
+                    paintLine.pathEngine.add(state);
+
+                }
+
+
+//                state = EngineState.LEFT_ANTICLOCKWISE;
+//                paintLine.pathEngine.add(state);
+
+
+                if (currentTheta < nextTheta && !reverse) {
                     break;
                 }
             }
+
 
         }
 
@@ -174,9 +322,8 @@ public class PaintLine {
         for (int i = minX; i < maxX; i++) {
             for (int j = minY; j < maxY; j++) {
 
-                if( i > 0 &&  i < bitmap.length && j > 0 && j < bitmap[i].length) {
+                if (i > 0 && i < bitmap.length && j > 0 && j < bitmap[i].length) {
                     color += bitmap[i][j];
-
 
 
                     count++;
@@ -186,13 +333,45 @@ public class PaintLine {
             }
         }
 
-        if(count != 0) {
+        if (count != 0) {
 
-        color /= count;
+            color /= count;
         }
 
 
         return color;
 
+    }
+
+    public void printPath() {
+
+
+        File file = new File("file.txt");
+
+        if (file.exists()) {
+            file.delete();
+        }
+
+        try {
+            file.createNewFile();
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file));
+
+            for (EngineState engineState : pathEngine.states) {
+                fileWriter.write(engineState.getByteChar());
+                fileWriter.write(",");
+//                fileWriter.newLine();
+
+            }
+
+            fileWriter.flush();
+
+            fileWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
+//        pathEngine.print();
     }
 }

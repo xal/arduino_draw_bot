@@ -13,8 +13,6 @@ import org.eclipse.swt.widgets.Display;
 
 public class ConverterController {
 
-    public static int IMAGE_VIEW_WIDTH = 300;
-    public static int IMAGE_VIEW_HEIGHT = 500;
 
     private ImageConvertPanel imageConvertPanel;
     private ImageInputPanel imageInputPanel;
@@ -56,7 +54,8 @@ public class ConverterController {
         Image greyed = new Image(Display.getCurrent(), normalImage, SWT.IMAGE_GRAY);
 
 
-        Image scaledImage = new Image(Display.getCurrent(), greyed.getImageData().scaledTo(IMAGE_VIEW_WIDTH, IMAGE_VIEW_HEIGHT));
+        Image scaledImage = new Image(Display.getCurrent(), greyed.getImageData().scaledTo(ImageOutputPanel.DRAW_WIDTH,
+                ImageOutputPanel.DRAW_WIDTH));
 
 
 

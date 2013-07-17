@@ -1,5 +1,7 @@
 package com.jff.arduino.drawbot.image.convertor.model;
 
+import com.jff.arduino.drawbot.image.convertor.main.Point2D;
+
 public class PolarPoint2D {
 
     public double r;

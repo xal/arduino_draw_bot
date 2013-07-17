@@ -2,26 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Circle2D.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/CircleUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/EngineState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintPathEngine.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Point2D.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/Point2D.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java" afterPath="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DrawBotImageConverter.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Main.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373536457822" ignored="false" />
-    <file path="/Dummy.txt" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373713770098" ignored="false" />
-    <file path="/fragment.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373719596666" ignored="false" />
+    <file path="/Dummy.txt" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374005152909" ignored="false" />
+    <file path="/fragment.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374006668348" ignored="false" />
     <file path="/ConvectorPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541533813" ignored="false" />
     <file path="/ImageInputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541573787" ignored="false" />
     <file path="/ImageConvertPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541919699" ignored="false" />
-    <file path="/ImageOutputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373721715315" ignored="false" />
-    <file path="/ConverterController.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373721640886" ignored="false" />
+    <file path="/ImageOutputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374064006914" ignored="false" />
+    <file path="/ConverterController.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374041357144" ignored="false" />
     <file path="/ConvertorPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373544452075" ignored="false" />
     <file path="/GrayscaleImageBitmap.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541781784" ignored="false" />
     <file path="/GrayScaleConverter.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373546571099" ignored="false" />
-    <file path="/PaintLine.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373720339361" ignored="false" />
-    <file path="/Point2D.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373547618804" ignored="false" />
+    <file path="/PaintLine.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374055149991" ignored="false" />
+    <file path="/Point2D.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374008180063" ignored="false" />
     <file path="/SpherePoint3D.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373618665302" ignored="false" />
+    <file path="/EngineState.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374055235844" ignored="false" />
+    <file path="/PaintPathEngine.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373965575221" ignored="false" />
+    <file path="/CircleLine.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374007570262" ignored="false" />
+    <file path="/Circle2D.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374008224731" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +85,68 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" line="107" class="com.jff.arduino.drawbot.image.convertor.model.PaintLine" package="com.jff.arduino.drawbot.image.convertor.model">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" line="141" class="com.jff.arduino.drawbot.image.convertor.model.PaintLine" package="com.jff.arduino.drawbot.image.convertor.model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="122" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel$1" package="com.jff.arduino.drawbot.image.convertor.ui">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="252" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel" package="com.jff.arduino.drawbot.image.convertor.ui">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="330" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel" package="com.jff.arduino.drawbot.image.convertor.ui">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="408" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel" package="com.jff.arduino.drawbot.image.convertor.ui">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -99,29 +171,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ImageOutputPanel.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ImageOutputPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="0" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageConvertPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageConvertPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="37" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConverterController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="8" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.6440678">
-              <folding />
+            <state line="410" column="19" selection-start="12862" selection-end="13239" vertical-scroll-proportion="0.37428573">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3402#4926#0" expanded="true" />
+                <element signature="e#4915#4916#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,47 +187,61 @@
       <file leaf-file-name="PaintLine.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="43" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+            <state line="359" column="56" selection-start="9056" selection-end="9056" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#508#517#0" expanded="true" />
+                <element signature="e#610#619#0" expanded="true" />
+                <element signature="method#addPointIntoLine#0;class#PaintLine#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConvertorPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ConvertorPanel.java">
+      <file leaf-file-name="CircleUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/CircleUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.0">
+            <state line="24" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EngineState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/EngineState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="44" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PolarPoint2D.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java">
+      <file leaf-file-name="file.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="42" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
+            <state line="0" column="27" selection-start="0" selection-end="135742" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageInputPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageInputPanel.java">
+      <file leaf-file-name="Circle2D.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Circle2D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="38" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.0">
+            <state line="20" column="0" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Point2D.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/Point2D.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Point2D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="105" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#3113#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -183,10 +255,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageData.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/swt-debug.jar!/org/eclipse/swt/graphics/ImageData.class">
+      <file leaf-file-name="ConvertorPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ConvertorPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="11" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
+            <state line="11" column="13" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConverterController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="16" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -210,22 +291,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convector/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/ImageBitmap.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/RGBPixel.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/GrayscaleImageBitmap.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageConvertPanel.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/GrayScaleImageBitmap.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ConvertorPanel.java" />
         <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/GrayScaleConverter.java" />
         <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageInputPanel.java" />
         <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/SpherePoint3D.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java" />
         <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/Point2D.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" />
-        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintPathEngine.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Angle2D.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/CircleLine.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/CircleUtils.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Circle2D.java" />
         <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Point2D.java" />
+        <option value="$PROJECT_DIR$/file.txt" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/EngineState.java" />
+        <option value="$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" />
       </list>
     </option>
   </component>
@@ -260,7 +341,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -398,6 +478,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,17 +494,21 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.jff.arduino.drawbot.image.convertor.ui" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/test_files" />
       <recent name="$PROJECT_DIR$/libs" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.jff.arduino.drawbot.image.convertor.main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.jff.arduino.drawbot.image.convector" />
@@ -432,7 +517,7 @@
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" singleton="true" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.jff.arduino.drawbot.image.convertor.main.Main" />
-      <option name="VM_PARAMETERS" value="-XstartOnFirstThread" />
+      <option name="VM_PARAMETERS" value="-XstartOnFirstThread -Xmx1024M -Xms1024M" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -452,6 +537,22 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="CircleUtils" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.jff.arduino.drawbot.image.convertor.main.CircleUtils" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="DrawBotImageConverter" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -464,19 +565,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -504,6 +592,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -540,12 +641,14 @@
       <patterns />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CircleUtils" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CircleUtils" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -592,13 +695,13 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721713" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2893031" sideWeight="0.6712538" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28525123" sideWeight="0.6727829" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32721713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -671,35 +774,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_files/chair.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageInputPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="64" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/GrayScaleImageBitmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
+        <state line="69" column="38" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Math.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="22" selection-start="2562" selection-end="2562" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/swt-debug.jar!/org/eclipse/swt/graphics/PaletteData.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="11" selection-start="431" selection-end="431" vertical-scroll-proportion="-4.56" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/swt-debug.jar!/org/eclipse/swt/graphics/ImageData.class">
@@ -709,43 +788,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageConvertPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="37" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
+        <state line="31" column="33" selection-start="742" selection-end="742" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_files/Untitled1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageInputPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="38" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.0">
+        <state line="20" column="79" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/Point2D.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Circle2D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
+        <state line="20" column="0" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/CircleUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ConvertorPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="47" selection-start="684" selection-end="684" vertical-scroll-proportion="0.0">
+        <state line="11" column="13" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PolarPoint2D.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="42" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
+        <state line="57" column="16" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/main/Point2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#3113#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -756,27 +849,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/file.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="27" selection-start="0" selection-end="135742" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/EngineState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="44" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/model/PaintLine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="43" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+        <state line="359" column="56" selection-start="9056" selection-end="9056" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#508#517#0" expanded="true" />
+            <element signature="e#610#619#0" expanded="true" />
+            <element signature="method#addPointIntoLine#0;class#PaintLine#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/controller/ConverterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="8" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.6440678">
-          <folding />
+        <state line="410" column="19" selection-start="12862" selection-end="13239" vertical-scroll-proportion="0.37428573">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3402#4926#0" expanded="true" />
+            <element signature="e#4915#4916#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
