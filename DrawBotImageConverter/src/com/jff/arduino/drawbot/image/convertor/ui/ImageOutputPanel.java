@@ -69,9 +69,9 @@ public class ImageOutputPanel extends Composite {
     public static double cylinderSteps = 200;
 
     public static double stepLineLength = 2 * Math.PI * cylinderRadius / cylinderSteps;
-    public static double stepRadiusLineLength = stepLineLength * 10;
+    public static double stepRadiusLineLength = stepLineLength * 2;
 
-    public static double stepSectorLineLength = 2 * Math.PI * stepRadiusLineLength / 4;
+    public static double stepSectorLineLength = 2 * Math.PI * stepRadiusLineLength ;
 
 
 //    public static Point2D leftEngineCenter = new Point2D(OFFSET_ENGINE, OFFSET_ENGINE);
@@ -388,124 +388,125 @@ public class ImageOutputPanel extends Composite {
 
         distanceBetweenStartAndGondola = Point2D.distance(startDrawPoint, previousGondolaCenter);
 
+        previousGondolaCenter = startDrawPoint;
+
+        previousRadiusLeft = Point2D.distance(leftEngineCenter, previousGondolaCenter);
+
+
+
+
         while (distanceBetweenStartAndGondola < drawCanvasDiagonalLength) {
 
-            System.out.println(distanceBetweenStartAndGondola + " " + drawCanvasDiagonalLength);
+            //System.out.println(distanceBetweenStartAndGondola + " " + drawCanvasDiagonalLength);
 
 
             boolean rowEnd = false;
 
+            boolean segmentUp = false;
+
+
+            double startRowRadius = previousRadiusLeft;
+
+            double nextRowRadius = startRowRadius + stepRadiusLineLength;
 
             while (!rowEnd) {
 
 
+
+
+
                 if (up) {
 
-                    System.out.println("leftdown");
+                    //System.out.println("leftdown");
 
-                    boolean sectorEnd = false;
+                    Point2D startSegmentPoint = previousGondolaCenter;
 
-                    Point2D startSectorPoint = previousGondolaCenter;
+                    double startTheta = Math.atan2(startSegmentPoint.y, startSegmentPoint.x);
 
-                    Point2D currentSectorPoint = startSectorPoint;
+                    Point2D currentSegmentPoint = startSegmentPoint;
+
+                    boolean segmentEnd = false;
+
+                    while(!segmentEnd) {
 
 
-                    previousState = EngineState.RIGHT_CLOCKWISE;
-                    doCalculate();
-                    paintLine.pathEngine.add(previousState);
+                        if (segmentUp) {
 
 
-//
-//                    boolean upSegment = false;
-//
-//                    while (!sectorEnd) {
-//
-//
-//                        double startSegmentRadiusLeft = previousRadiusLeft;
-//
-//                        previousState = EngineState.RIGHT_CLOCKWISE;
-//                        doCalculate();
-//                        paintLine.pathEngine.add(previousState);
-//
-//
-//                        Point2D startSegmentPoint = previousGondolaCenter;
-//                        Point2D currentSegmentPoint = startSegmentPoint;
-//
-////                        boolean segmentEnd = false;
-////
-////
-////                        while (!segmentEnd) {
-////
-////                            if (upSegment) {
-////
-////                                previousState = EngineState.LEFT_ANTICLOCKWISE;
-////                                doCalculate();
-////                                paintLine.pathEngine.add(previousState);
-////
-////
-////                            } else {
-////                                previousState = EngineState.LEFT_CLOCKWISE;
-////                                doCalculate();
-////                                paintLine.pathEngine.add(previousState);
-////
-////                            }
-////
-////                            currentSegmentPoint = previousGondolaCenter;
-////
-////                            double distanceSegment;
-////
-////                                distanceSegment = Point2D.distance(currentSegmentPoint, startDrawPoint);
-////                            if (upSegment) {
-////
-////                                double prevPrevRadius = startSegmentRadiusLeft - stepRadiusLineLength;
-////
-////                                if(distanceSegment <= prevPrevRadius) {
-////                                    segmentEnd = true;
-////                                }
-////
-////                            } else {
-////
-////
-////                                if(distanceSegment >= startSegmentRadiusLeft) {
-////                                    segmentEnd = true;
-////                                }
-////                            }
-////
-////
-////                        }
-//
-//
-//
-//                        if(up) {
-//                            upLeft(paintLine);
-//                        } else {
-//                            downRight(paintLine);
-//                        }
-//
-//
-//
-//                        currentSectorPoint = previousGondolaCenter;
-//
-//                        upSegment = !upSegment;
-//
-//                        double phiStartSectorPoint =  Math.atan2(startSectorPoint.y, startSectorPoint.x);
-//                        double phiCurrentSectorPoint = Math.atan2(currentSectorPoint.y, currentSectorPoint.x);
-//
-//                        double pieceOfCircle = 2 * Math.PI / Math.abs(phiStartSectorPoint - phiCurrentSectorPoint);
-//
-//                        double currentCircleLength = Math.PI * 2 * previousLengthLeft;
-//
-//                        double currentLength = currentCircleLength / pieceOfCircle;
-//
-//
-//                        if ((currentLength > stepSectorLineLength
-//                                || previousGondolaCenter.y < startDrawPoint.y
-//                                || previousGondolaCenter.x > startDrawPoint.x) ) {
-//
-//                            sectorEnd = true;
-//
-//                        }
-//                    }
+                            while (previousRadiusLeft < nextRowRadius) {
+                                previousState = EngineState.LEFT_CLOCKWISE;
+                                doCalculate();
+                                paintLine.pathEngine.add(previousState);
+
+
+
+                            }
+
+
+
+                        } else {
+
+                            //  for(int i = 0; i < 10; i++) {
+                            while (previousRadiusLeft > startRowRadius)      {
+                                previousState = EngineState.LEFT_ANTICLOCKWISE;
+                                doCalculate();
+                                paintLine.pathEngine.add(previousState);
+                            }
+                        }
+
+
+
+
+                        int countSpaces = 15;
+
+
+
+                        for(int i = 0; i < countSpaces; i++) {
+
+                            previousState = EngineState.RIGHT_CLOCKWISE;
+                            doCalculate();
+                            paintLine.pathEngine.add(previousState);
+                        }
+
+
+                        currentSegmentPoint = previousGondolaCenter;
+
+                        segmentUp = !segmentUp;
+
+
+
+                        double currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
+
+                        double deltaTheta = Math.abs(startTheta - currentTheta);
+
+                        double pieceTheta = deltaTheta/Math.PI * 2 ;
+
+                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
+
+                        double currentCirclePieceLength = currentCircleLength * pieceTheta;
+
+//                        System.out.println(Math.toDegrees(startTheta) + " -> " + Math.toDegrees(currentTheta));
+//                        System.out.println(currentCirclePieceLength +  " " + stepSectorLineLength);
+                        if(currentCirclePieceLength > stepSectorLineLength && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                        if (previousGondolaCenter.y < startDrawPoint.y && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                        if (previousGondolaCenter.x > endDrawPoint.x && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                    }
+
+
+
+
+
+
+
 
 
                     if (previousGondolaCenter.y < startDrawPoint.y) {
@@ -519,11 +520,85 @@ public class ImageOutputPanel extends Composite {
                 } else {
 
 
-                    System.out.println("upright");
+                    Point2D startSegmentPoint = previousGondolaCenter;
 
-                    previousState = EngineState.RIGHT_ANTICLOCKWISE;
-                    doCalculate();
-                    paintLine.pathEngine.add(previousState);
+                    double startTheta = Math.atan2(startSegmentPoint.y, startSegmentPoint.x);
+
+                    Point2D currentSegmentPoint = startSegmentPoint;
+
+                    boolean segmentEnd = false;
+
+                    while(!segmentEnd) {
+
+
+
+
+                        if (segmentUp) {
+
+
+                            while (previousRadiusLeft < nextRowRadius) {
+                                previousState = EngineState.LEFT_CLOCKWISE;
+                                doCalculate();
+                                paintLine.pathEngine.add(previousState);
+
+
+
+                            }
+
+
+
+                        } else {
+
+                            //  for(int i = 0; i < 10; i++) {
+                            while (previousRadiusLeft > startRowRadius)      {
+                                previousState = EngineState.LEFT_ANTICLOCKWISE;
+                                doCalculate();
+                                paintLine.pathEngine.add(previousState);
+                            }
+                        }
+
+                        for(int i = 0; i< 2; i++) {
+
+                            previousState = EngineState.RIGHT_ANTICLOCKWISE;
+                            doCalculate();
+                            paintLine.pathEngine.add(previousState);
+                        }
+
+                        currentSegmentPoint = previousGondolaCenter;
+
+                        segmentUp = !segmentUp;
+
+
+
+                        double currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
+
+                        double deltaTheta = Math.abs(startTheta - currentTheta);
+
+                        double pieceTheta = deltaTheta/Math.PI * 2 ;
+
+                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
+
+                        double currentCirclePieceLength = currentCircleLength * pieceTheta;
+
+//                        System.out.println(Math.toDegrees(startTheta) + " -> " + Math.toDegrees(currentTheta));
+//                        System.out.println(currentCirclePieceLength +  " " + stepSectorLineLength);
+                        if(currentCirclePieceLength > stepSectorLineLength && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                        if (previousGondolaCenter.x < startDrawPoint.x && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                        if (previousGondolaCenter.y > endDrawPoint.y && !segmentUp) {
+                            segmentEnd = true;
+                        }
+
+                    }
+
+
+
+
 
 
                     if (previousGondolaCenter.x < startDrawPoint.x) {
@@ -540,7 +615,7 @@ public class ImageOutputPanel extends Composite {
                 Point2D startRowPoint = previousGondolaCenter;
 
 
-                System.out.println("up = " + up + " " + previousGondolaCenter);
+//                System.out.println("up = " + up + " " + previousGondolaCenter);
 
             }
 
@@ -573,8 +648,12 @@ public class ImageOutputPanel extends Composite {
             up = !up;
 
 
+            double prev = distanceBetweenStartAndGondola;
+
             distanceBetweenStartAndGondola = Point2D.distance(startDrawPoint, previousGondolaCenter);
 
+
+            System.out.println(" dist " + distanceBetweenStartAndGondola);
 
         }
 
@@ -595,7 +674,6 @@ public class ImageOutputPanel extends Composite {
         Point2D startDownPoint = previousGondolaCenter;
 
         Point2D currentDownPoint = startDownPoint;
-
 
 
         double startRadius = previousRadiusLeft;
@@ -626,7 +704,7 @@ public class ImageOutputPanel extends Composite {
 
         }
 
-        System.out.println("right " + steps);
+        //   System.out.println("right " + steps);
 
 
     }
@@ -634,7 +712,6 @@ public class ImageOutputPanel extends Composite {
     private void down(PaintLine paintLine) {
 
         int steps = 0;
-
 
 
         Point2D startDownPoint = previousGondolaCenter;
@@ -666,16 +743,16 @@ public class ImageOutputPanel extends Composite {
 
             currentDownPoint = previousGondolaCenter;
 
-            System.out.println(previousRadiusLeft - startRadius);
+            //System.out.println(previousRadiusLeft - startRadius);
         }
 
-        System.out.println("down " + steps);
+        //  System.out.println("down " + steps);
 
     }
 
     private void downRight(PaintLine paintLine) {
 
-        System.out.println("downRight");
+        //   System.out.println("downRight");
 
         Point2D startPoint = previousGondolaCenter;
 
@@ -693,21 +770,20 @@ public class ImageOutputPanel extends Composite {
             currentPoint = previousGondolaCenter;
 
 
-
         }
 
 
-        previousState = EngineState.RIGHT_CLOCKWISE;
-        doCalculate();
-        paintLine.pathEngine.add(previousState);
-        currentPoint = previousGondolaCenter;
+//        previousState = EngineState.RIGHT_CLOCKWISE;
+//        doCalculate();
+//        paintLine.pathEngine.add(previousState);
+//        currentPoint = previousGondolaCenter;
 
 
     }
 
     private void upLeft(PaintLine paintLine) {
 
-        System.out.println("downRight");
+        //  System.out.println("downRight");
 
         Point2D startPoint = previousGondolaCenter;
 
@@ -730,10 +806,10 @@ public class ImageOutputPanel extends Composite {
         }
 
 
-        previousState = EngineState.RIGHT_CLOCKWISE;
-        doCalculate();
-        paintLine.pathEngine.add(previousState);
-        currentPoint = previousGondolaCenter;
+//        previousState = EngineState.RIGHT_CLOCKWISE;
+//        doCalculate();
+//        paintLine.pathEngine.add(previousState);
+//        currentPoint = previousGondolaCenter;
 
 
     }
