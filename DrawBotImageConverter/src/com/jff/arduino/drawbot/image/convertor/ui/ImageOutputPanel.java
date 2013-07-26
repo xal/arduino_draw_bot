@@ -18,17 +18,14 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Collection;
 
 public class ImageOutputPanel extends Composite {
     private static final int OFFSET_ENGINE = 10;
 
     private static final int OFFSET_DRAW = 20;
-    private static final int MAX_COUNT_SPACE = 1;
+
+    private static final int MAX_COUNT_SPACE = 5;
 
     private double previousLengthRight;
     private double previousLengthLeft;
@@ -71,9 +68,9 @@ public class ImageOutputPanel extends Composite {
     public static double cylinderSteps = 200;
 
     public static double stepLineLength = 2 * Math.PI * cylinderRadius / cylinderSteps;
-    public static double stepRadiusLineLength = stepLineLength * 5;
+    public static double stepRadiusLineLength = stepLineLength * 2;
 
-    public static double stepSectorLineLength = 2 * Math.PI * stepRadiusLineLength ;
+    public static double stepSectorLineLength = stepRadiusLineLength * 1;
 
 
 //    public static Point2D leftEngineCenter = new Point2D(OFFSET_ENGINE, OFFSET_ENGINE);
@@ -455,43 +452,21 @@ public class ImageOutputPanel extends Composite {
                         PolarPoint2D polarPoint = new PolarPoint2D(previousRadiusLeft, nextTheta);
                         Point2D nextPoint = PolarPoint2D.toCartesian(polarPoint);
 
-                        int colorForRegion = getColorForRegion(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
 
 
-                        int maxColor = 257;
-
-                        double colorRatio = ((double)(maxColor - colorForRegion))/maxColor;
-                        System.out.println(colorForRegion +" "+colorRatio);
-                        //int countSpaces = (int) (MAX_COUNT_SPACE * colorRatio);
-                        int countSpaces = MAX_COUNT_SPACE;
-
-                        if (segmentUp) {
-
-
-                            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength) {
-                                previousState = EngineState.LEFT_CLOCKWISE;
-                                doCalculate();
-                                paintLine.pathEngine.add(previousState);
+                        double colorRatio = colorRatio(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
 
 
 
-                            }
+
+                        //colorRatio = 1f;
+                        int countSpaces = calcCountSpaces(colorRatio);
 
 
-
-                        } else {
-
-                            //  for(int i = 0; i < 10; i++) {
-//                            while (previousRadiusLeft > startRowRadius)      {
-                            while (previousRadiusLeft > startRowRadius)      {
-                                previousState = EngineState.LEFT_ANTICLOCKWISE;
-                                doCalculate();
-                                paintLine.pathEngine.add(previousState);
-                            }
-                        }
+                        //int countSpaces = MAX_COUNT_SPACE;
 
 
-
+                        upDown(paintLine, segmentUp, startRowRadius, colorRatio);
 
 
                         for(int i = 0; i < countSpaces; i++) {
@@ -574,30 +549,6 @@ public class ImageOutputPanel extends Composite {
 
 
 
-                        if (segmentUp) {
-
-
-                            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength) {
-                                previousState = EngineState.LEFT_CLOCKWISE;
-                                doCalculate();
-                                paintLine.pathEngine.add(previousState);
-
-
-
-                            }
-
-
-
-                        } else {
-
-                            //  for(int i = 0; i < 10; i++) {
-                            while (previousRadiusLeft > startRowRadius)      {
-                                previousState = EngineState.LEFT_ANTICLOCKWISE;
-                                doCalculate();
-                                paintLine.pathEngine.add(previousState);
-                            }
-                        }
-
                         double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
 
 
@@ -621,15 +572,17 @@ public class ImageOutputPanel extends Composite {
                         PolarPoint2D polarPoint = new PolarPoint2D(previousRadiusLeft, nextTheta);
                         Point2D nextPoint = PolarPoint2D.toCartesian(polarPoint);
 
-                        int colorForRegion = getColorForRegion(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
 
 
-                        int maxColor = 256;
+                        double colorRatio = colorRatio(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
 
-                        double colorRatio = (maxColor - colorForRegion)/maxColor;
+                        //colorRatio = 0.5f;
+                        int countSpaces = calcCountSpaces(colorRatio);
 
-//                        int countSpaces = (int) (MAX_COUNT_SPACE * colorRatio);
-                         int countSpaces = MAX_COUNT_SPACE;
+//                         int countSpaces = MAX_COUNT_SPACE;
+
+
+                        upDown(paintLine, segmentUp, startRowRadius, colorRatio);
 
 
                         for(int i = 0; i < countSpaces; i++) {
@@ -741,6 +694,64 @@ public class ImageOutputPanel extends Composite {
 
     }
 
+    private int calcCountSpaces(double colorRatio) {
+        int countSpace = (int) (MAX_COUNT_SPACE * colorRatio);
+        //int countSpace = (int) (MAX_COUNT_SPACE);
+        //int countSpace = (int) (1);
+
+        countSpace += 1;
+
+        System.out.println("count space " + countSpace);
+
+        return countSpace;
+    }
+
+    private double colorRatio(GrayScaleImageBitmap grayScaleImageBitmap, Point2D currentSegmentPoint, Point2D nextPoint) {
+
+        double colorForRegion = getColorForRegion(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
+
+
+
+        double  maxColor = 257;
+        double colorRatio = colorForRegion /maxColor;
+
+       // colorRatio = 1f;
+        System.out.println("color region " +colorForRegion+" color ratio " + colorRatio);
+
+        return colorRatio;
+    }
+
+    private void upDown(PaintLine paintLine, boolean segmentUp, double startRowRadius, double colorRatio) {
+        if (segmentUp) {
+
+
+
+//            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength * colorRatio) {
+
+            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength * 2 *(1-colorRatio)) {
+           // while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength ) {
+                previousState = EngineState.LEFT_CLOCKWISE;
+                doCalculate();
+                paintLine.pathEngine.add(previousState);
+
+
+
+            }
+
+
+
+        } else {
+
+            //  for(int i = 0; i < 10; i++) {
+//                            while (previousRadiusLeft > startRowRadius)      {
+            while (previousRadiusLeft > startRowRadius)      {
+                previousState = EngineState.LEFT_ANTICLOCKWISE;
+                doCalculate();
+                paintLine.pathEngine.add(previousState);
+            }
+        }
+    }
+
     private void doCalculate() {
         rotate();
         calculateNewGondolaCenter();
@@ -803,8 +814,11 @@ public class ImageOutputPanel extends Composite {
 
         double startRadius = previousRadiusLeft;
 
+        boolean reverse = true;
 
         while (previousRadiusLeft - startRadius < stepRadiusLineLength) {
+
+//            if(reverse) {
 
             while (currentDownPoint.x >= startDownPoint.x) {
                 previousState = EngineState.RIGHT_ANTICLOCKWISE;
@@ -813,7 +827,7 @@ public class ImageOutputPanel extends Composite {
                 currentDownPoint = previousGondolaCenter;
                 steps++;
             }
-
+//            } else {
 
             while (currentDownPoint.x < startDownPoint.x) {
                 previousState = EngineState.LEFT_CLOCKWISE;
@@ -822,11 +836,18 @@ public class ImageOutputPanel extends Composite {
                 currentDownPoint = previousGondolaCenter;
                 steps++;
             }
+//            }
+
+                reverse = !reverse;
 
             currentDownPoint = previousGondolaCenter;
 
             //System.out.println(previousRadiusLeft - startRadius);
         }
+
+
+
+        currentDownPoint = previousGondolaCenter;
 
         //  System.out.println("down " + steps);
 

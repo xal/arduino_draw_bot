@@ -14,7 +14,7 @@
     <file path="/ConvectorPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541533813" ignored="false" />
     <file path="/ImageInputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541573787" ignored="false" />
     <file path="/ImageConvertPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541919699" ignored="false" />
-    <file path="/ImageOutputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374839549705" ignored="false" />
+    <file path="/ImageOutputPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374848726804" ignored="false" />
     <file path="/ConverterController.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1374041357144" ignored="false" />
     <file path="/ConvertorPanel.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373544452075" ignored="false" />
     <file path="/GrayscaleImageBitmap.java" changelist="cc7d267f-8b9b-4e57-8045-8c22ea7b9996" time="1373541781784" ignored="false" />
@@ -93,7 +93,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="496" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel" package="com.jff.arduino.drawbot.image.convertor.ui">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java" line="471" class="com.jff.arduino.drawbot.image.convertor.ui.ImageOutputPanel" package="com.jff.arduino.drawbot.image.convertor.ui">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -121,7 +121,7 @@
       <file leaf-file-name="ImageOutputPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="470" column="94" selection-start="15028" selection-end="15028" vertical-scroll-proportion="0.7627119">
+            <state line="730" column="84" selection-start="22541" selection-end="22541" vertical-scroll-proportion="0.61170214">
               <folding />
             </state>
           </provider>
@@ -130,7 +130,7 @@
       <file leaf-file-name="file.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="166570" selection-start="0" selection-end="2" vertical-scroll-proportion="0.0">
+            <state line="0" column="136350" selection-start="136350" selection-end="136350" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -589,9 +589,10 @@
     <frame x="0" y="22" width="1280" height="774" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -607,7 +608,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -725,7 +725,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="166570" selection-start="0" selection-end="2" vertical-scroll-proportion="0.0">
+        <state line="0" column="136350" selection-start="136350" selection-end="136350" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -774,7 +774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jff/arduino/drawbot/image/convertor/ui/ImageOutputPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="470" column="94" selection-start="15028" selection-end="15028" vertical-scroll-proportion="0.7627119">
+        <state line="730" column="84" selection-start="22541" selection-end="22541" vertical-scroll-proportion="0.61170214">
           <folding />
         </state>
       </provider>
