@@ -28,6 +28,8 @@ public class ImageOutputPanel extends Composite {
     private static final int OFFSET_ENGINE = 10;
 
     private static final int OFFSET_DRAW = 20;
+    private static final int MAX_COUNT_SPACE = 1;
+
     private double previousLengthRight;
     private double previousLengthLeft;
     private Point2D previousGondolaCenter;
@@ -69,7 +71,7 @@ public class ImageOutputPanel extends Composite {
     public static double cylinderSteps = 200;
 
     public static double stepLineLength = 2 * Math.PI * cylinderRadius / cylinderSteps;
-    public static double stepRadiusLineLength = stepLineLength * 2;
+    public static double stepRadiusLineLength = stepLineLength * 5;
 
     public static double stepSectorLineLength = 2 * Math.PI * stepRadiusLineLength ;
 
@@ -407,7 +409,7 @@ public class ImageOutputPanel extends Composite {
 
             double startRowRadius = previousRadiusLeft;
 
-            double nextRowRadius = startRowRadius + stepRadiusLineLength;
+
 
             while (!rowEnd) {
 
@@ -430,10 +432,43 @@ public class ImageOutputPanel extends Composite {
                     while(!segmentEnd) {
 
 
+                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
+
+
+
+                        double currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
+
+                        double deltaTheta = Math.abs(startTheta - currentTheta);
+
+                        double pieceTheta = deltaTheta/(Math.PI * 2);
+
+
+                        double currentCirclePieceLength = currentCircleLength * pieceTheta;
+                        currentCirclePieceLength = stepSectorLineLength;
+
+                        pieceTheta = currentCirclePieceLength/currentCircleLength;
+
+                        deltaTheta = pieceTheta * Math.PI * 2;
+
+                        double nextTheta = currentTheta - deltaTheta;
+
+                        PolarPoint2D polarPoint = new PolarPoint2D(previousRadiusLeft, nextTheta);
+                        Point2D nextPoint = PolarPoint2D.toCartesian(polarPoint);
+
+                        int colorForRegion = getColorForRegion(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
+
+
+                        int maxColor = 257;
+
+                        double colorRatio = ((double)(maxColor - colorForRegion))/maxColor;
+                        System.out.println(colorForRegion +" "+colorRatio);
+                        //int countSpaces = (int) (MAX_COUNT_SPACE * colorRatio);
+                        int countSpaces = MAX_COUNT_SPACE;
+
                         if (segmentUp) {
 
 
-                            while (previousRadiusLeft < nextRowRadius) {
+                            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength) {
                                 previousState = EngineState.LEFT_CLOCKWISE;
                                 doCalculate();
                                 paintLine.pathEngine.add(previousState);
@@ -447,6 +482,7 @@ public class ImageOutputPanel extends Composite {
                         } else {
 
                             //  for(int i = 0; i < 10; i++) {
+//                            while (previousRadiusLeft > startRowRadius)      {
                             while (previousRadiusLeft > startRowRadius)      {
                                 previousState = EngineState.LEFT_ANTICLOCKWISE;
                                 doCalculate();
@@ -457,15 +493,21 @@ public class ImageOutputPanel extends Composite {
 
 
 
-                        int countSpaces = 15;
-
-
 
                         for(int i = 0; i < countSpaces; i++) {
 
                             previousState = EngineState.RIGHT_CLOCKWISE;
                             doCalculate();
                             paintLine.pathEngine.add(previousState);
+
+                            if (previousGondolaCenter.y < startDrawPoint.y) {
+                                break;
+                            }
+
+                            if (previousGondolaCenter.x > endDrawPoint.x) {
+                                break;
+                            }
+
                         }
 
 
@@ -475,15 +517,14 @@ public class ImageOutputPanel extends Composite {
 
 
 
-                        double currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
+                       currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
 
-                        double deltaTheta = Math.abs(startTheta - currentTheta);
+                        deltaTheta = Math.abs(startTheta - currentTheta);
 
-                        double pieceTheta = deltaTheta/Math.PI * 2 ;
+                        pieceTheta = deltaTheta/(Math.PI * 2);
 
-                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
 
-                        double currentCirclePieceLength = currentCircleLength * pieceTheta;
+                        currentCirclePieceLength = currentCircleLength * pieceTheta;
 
 //                        System.out.println(Math.toDegrees(startTheta) + " -> " + Math.toDegrees(currentTheta));
 //                        System.out.println(currentCirclePieceLength +  " " + stepSectorLineLength);
@@ -536,7 +577,7 @@ public class ImageOutputPanel extends Composite {
                         if (segmentUp) {
 
 
-                            while (previousRadiusLeft < nextRowRadius) {
+                            while (previousRadiusLeft  - startRowRadius < stepRadiusLineLength) {
                                 previousState = EngineState.LEFT_CLOCKWISE;
                                 doCalculate();
                                 paintLine.pathEngine.add(previousState);
@@ -557,16 +598,7 @@ public class ImageOutputPanel extends Composite {
                             }
                         }
 
-                        for(int i = 0; i< 2; i++) {
-
-                            previousState = EngineState.RIGHT_ANTICLOCKWISE;
-                            doCalculate();
-                            paintLine.pathEngine.add(previousState);
-                        }
-
-                        currentSegmentPoint = previousGondolaCenter;
-
-                        segmentUp = !segmentUp;
+                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
 
 
 
@@ -574,12 +606,62 @@ public class ImageOutputPanel extends Composite {
 
                         double deltaTheta = Math.abs(startTheta - currentTheta);
 
-                        double pieceTheta = deltaTheta/Math.PI * 2 ;
+                        double pieceTheta = deltaTheta/(Math.PI * 2);
 
-                        double currentCircleLength = Math.PI * 2 * previousRadiusLeft;
 
                         double currentCirclePieceLength = currentCircleLength * pieceTheta;
+                        currentCirclePieceLength = stepSectorLineLength;
 
+                        pieceTheta = currentCirclePieceLength/currentCircleLength;
+
+                        deltaTheta = pieceTheta * Math.PI * 2;
+
+                        double nextTheta = currentTheta + deltaTheta;
+
+                        PolarPoint2D polarPoint = new PolarPoint2D(previousRadiusLeft, nextTheta);
+                        Point2D nextPoint = PolarPoint2D.toCartesian(polarPoint);
+
+                        int colorForRegion = getColorForRegion(grayScaleImageBitmap, currentSegmentPoint, nextPoint);
+
+
+                        int maxColor = 256;
+
+                        double colorRatio = (maxColor - colorForRegion)/maxColor;
+
+//                        int countSpaces = (int) (MAX_COUNT_SPACE * colorRatio);
+                         int countSpaces = MAX_COUNT_SPACE;
+
+
+                        for(int i = 0; i < countSpaces; i++) {
+
+                            previousState = EngineState.RIGHT_ANTICLOCKWISE;
+                            doCalculate();
+                            paintLine.pathEngine.add(previousState);
+
+                            if (previousGondolaCenter.x < startDrawPoint.x) {
+                                break;
+                            }
+
+                            if (previousGondolaCenter.y > endDrawPoint.y) {
+                             break;
+                            }
+                        }
+
+
+                        currentSegmentPoint = previousGondolaCenter;
+
+                        segmentUp = !segmentUp;
+
+
+
+                        currentTheta = Math.atan2(currentSegmentPoint.y,currentSegmentPoint.x);
+
+                        deltaTheta = Math.abs(startTheta - currentTheta);
+
+                        pieceTheta = deltaTheta/(Math.PI * 2);
+
+
+                        currentCirclePieceLength = currentCircleLength * pieceTheta;
 //                        System.out.println(Math.toDegrees(startTheta) + " -> " + Math.toDegrees(currentTheta));
 //                        System.out.println(currentCirclePieceLength +  " " + stepSectorLineLength);
                         if(currentCirclePieceLength > stepSectorLineLength && !segmentUp) {
@@ -982,6 +1064,9 @@ public class ImageOutputPanel extends Composite {
 //    }
 
     private static int getColorForRegion(GrayScaleImageBitmap grayScaleImageBitmap, Point2D currentPoint2D, Point2D nextPoint2D) {
+
+        currentPoint2D = new Point2D(currentPoint2D.x - startDrawPoint.x, currentPoint2D.y - startDrawPoint.y);
+        nextPoint2D = new Point2D(nextPoint2D .x - startDrawPoint.x, nextPoint2D.y - startDrawPoint.y);
 
         int[][] bitmap = grayScaleImageBitmap.getBitmap();
 
